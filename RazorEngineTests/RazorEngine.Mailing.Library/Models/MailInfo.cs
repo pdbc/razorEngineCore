@@ -6,8 +6,8 @@ namespace RazorEngine.Mailing.Library.Models
     public class MailInfo
     {
         // Profile
-        public long AreaId { get; set; }
-        public String AreaType { get; set; }
+        //public long AreaId { get; set; }
+        //public String AreaType { get; set; }
 
 
         // Template

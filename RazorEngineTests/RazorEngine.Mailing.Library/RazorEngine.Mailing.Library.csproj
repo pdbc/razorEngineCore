@@ -25,6 +25,9 @@
     <None Update="Templates\Layout\greeting.cshtml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="Templates\Layout\headerForApplicationScope.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="Templates\Layout\header.cshtml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
