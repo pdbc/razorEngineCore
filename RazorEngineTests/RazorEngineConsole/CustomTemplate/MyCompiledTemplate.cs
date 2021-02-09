@@ -3,6 +3,15 @@ using RazorEngineCore;
 
 namespace RazorEngineConsole.CustomTemplate
 {
+    public class InternalAnonymousTypeWrapper : AnonymousTypeWrapper
+    {
+        public object Model { get; set; }
+
+        public InternalAnonymousTypeWrapper(object model) : base(model)
+        {
+            Model = model;
+        }
+    }
     public class MyCompiledTemplate
     {
         private readonly IRazorEngineCompiledTemplate<LayoutTemplateBase> compiledTemplate;
@@ -25,9 +34,9 @@ namespace RazorEngineConsole.CustomTemplate
 
             string result = template.Run(instance =>
             {
-                if (!(model is AnonymousTypeWrapper))
+                if (!(model is InternalAnonymousTypeWrapper))
                 {
-                    model = new AnonymousTypeWrapper(model);
+                    model = new InternalAnonymousTypeWrapper(model);
                 }
 
                 instance.Model = model;
@@ -43,14 +52,15 @@ namespace RazorEngineConsole.CustomTemplate
 
             return this.compiledParts[templateReference.Layout].Run(instance =>
             {
-                if (!(model is AnonymousTypeWrapper))
+                if (!(model is InternalAnonymousTypeWrapper))
                 {
-                    model = new AnonymousTypeWrapper(model);
+                    model = new InternalAnonymousTypeWrapper(model);
                 }
 
                 instance.Model = model;
                 instance.IncludeCallback = (key, includeModel) => this.Run(this.compiledParts[key], includeModel);
                 instance.RenderBodyCallback = () => result;
+                instance.RenderTextBodyCallback = () => "The text of the mail should come here !!!!";
             });
         }
 

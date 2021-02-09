@@ -1,5 +1,79 @@
-﻿@inherits RazorEngineCore.RazorEngineTemplateBase<RazorEngineConsole.Models.TestModel>
+﻿@inherits RazorEngineCore.RazorEngineTemplateBase<RazorEngineConsole.Models.MailModel>
 
-LAYOUT HEADER
-    @RenderBody()
-LAYOUT FOOTER
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>@Model.Subject</title>
+
+    @Include("stylesheet", Model)
+</head>
+
+
+<body>
+    <table class="table-mail-container" align="center" width="600" cellpadding="0" cellspacing="0">
+        <tbody>
+            <tr>
+                <td vAlign="top" rowspan="1" colspan="1">
+                    <table class="table-mail-content" cellpadding="0" cellspacing="0" border="0">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    @Include("header", Model.ApplicationScope)
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <table align="center" class="table-mail-body">
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <!-- Header -->
+                                                    <table align="center" width="100%" cellspacing="0" cellpadding="0">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td style="text-align: center;">
+                                                                    <p class="mail-title"> MAILTITLE COMES HERE ????? </p>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+
+                                                    <div class="horizontal-divider-whitespace">&nbsp;</div>
+
+                                                    <!-- Salutation -->
+                                                    <p>Hi <span class="blurrable">@Model.Firstname @Model.Lastname</span>,</p>
+
+                                                    @RenderBody()
+
+
+                                                    @Include("greeting", @Model.Language)
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td vAlign="top" rowspan="1" colspan="1">
+                    <table class="table-mail-footer" cellpadding="0" cellspacing="0" border="0">
+                        <tbody>
+                            <tr>
+                                <td>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
+
+<CustomText>
+    @Include(@Model.TemplateName, @Model)
+</CustomText>

@@ -1,0 +1,108 @@
+﻿@using IdentityStore.Core.Mailing
+@model IdentityStore.Core.Mailing.Implementation.ViewModels.AuditProfileMergeViewModel
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+@Include("Head", Model.MailInfo, typeof(MailInfo))
+
+<body>
+    <table class="table-mail-container" align="center" width="600" cellpadding="0" cellspacing="0">
+        <tbody>
+            <tr>
+                <td vAlign="top" rowspan="1" colspan="1">
+                    <table class="table-mail-content" cellpadding="0" cellspacing="0" border="0">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    @Include("MailHeader")
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <table align="center" class="table-mail-body">
+                                        <tbody>
+                                            <tr>
+                                                <td>
+
+                                                    <!-- Header -->
+                                                    <table align="center" width="100%" cellspacing="0" cellpadding="0">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td style="text-align: center;">
+                                                                    <p class="mail-title">Vos comptes SD Worx ont été fusionnés</p>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                    <p>Chère/Cher <span class="blurrable">@Model.MailInfo.Firstname @Model.MailInfo.Lastname</span>,</p>
+
+                                                    <p>Vous recevez cet e-mail parce que vos comptes SD Worx ont été regroupés. Vous l'avez peut-être fait vous-même via Mon compte, ou bien nous l'avons fait pour vous. Si, après vérification de nos données, nous constatons qu'il y a plusieurs comptes pour une même personne, ceux-ci sont automatiquement regroupés.</p>
+
+                                                    <!-- Action -->
+                                                    <table width="100%" cellspacing="0" cellpadding="0">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td class="border-secondary">
+                                                                    <p class="text-secondary">
+                                                                        <strong>Votre adresse e-mail de connexion :</strong>
+                                                                    </p>
+                                                                    <ul>
+                                                                        <li class="text-secondary"><span class="blurrable">@Model.EmailAddress</span></li>
+                                                                        <li>votre mot de passe choisi</li>
+                                                                    </ul>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="border-padding">
+                                                                    <p>
+                                                                        <strong>Vos données :</strong>
+                                                                    </p>
+                                                                    <ul class="mail-unordered-list">
+                                                                        <li>Prénom : <span class="blurrable">@Model.Firstname</span></li>
+                                                                        <li>Nom : <span class="blurrable">@Model.Lastname</span></li>
+                                                                        <li>Date de naissance : <span class="blurrable">@Model.DateOfBirth</span></li>
+                                                                        <li>Adresse e-mail : <span class="blurrable">@Model.EmailAddress</span></li>
+                                                                        @if (Model.HasMobileNumber())
+                                                                        {
+                                                                            <li>Numéro de téléphone mobile : <span class="blurrable">+@Model.MobileNumberPrefix@Model.MobileNumber</span></li>
+                                                                        }
+                                                                    </ul>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+
+
+                                                    <p>Votre autre compte <span class="blurrable">@Model.PreviousEmailAddress</span> a été désactivé. Vous ne pourrez pas vous connecter avec ces identifiants. Toutes les applications sont maintenant disponibles avec le compte <span class="blurrable">@Model.EmailAddress</span>.</p>
+
+                                                    <p>Vous pouvez en outre consulter et modifier à tout moment vos données de compte SD Worx via <a href="@Model.PortalProfileUrl" target="_blank">Mon compte</a></p>
+
+                                                    @Include("MailGreeting", "fr", typeof(string))
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td vAlign="top" rowspan="1" colspan="1">
+                    <table class="table-mail-footer" cellpadding="0" cellspacing="0" border="0">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    @Include("MailFooter", "FR", typeof(string))
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

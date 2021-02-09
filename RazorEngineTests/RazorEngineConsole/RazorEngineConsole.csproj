@@ -6,6 +6,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Mailing\**" />
+    <EmbeddedResource Remove="Mailing\**" />
+    <None Remove="Mailing\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Remove="IncludeAndLayoutTemplate.cs" />
     <Compile Remove="PreCompilingSimpleTemplates.cs" />
   </ItemGroup>
@@ -15,13 +21,34 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="SharedTemplates\layout.cshtml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="SharedTemplates\header_nl.cshtml">
+    <None Update="SharedTemplates\footer.cshtml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="SharedTemplates\header.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="SharedTemplates\horizontal-divider.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="SharedTemplates\template3-text.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="SharedTemplates\stylesheet.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="SharedTemplates\layout.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="SharedTemplates\greeting.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Templates\Invitation\invitation.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Templates\Layout\template3.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Templates\Layout\template3_nl.cshtml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="Templates\SubFolder\template2.cshtml">

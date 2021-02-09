@@ -1,0 +1,75 @@
+﻿@using IdentityStore.Core.Mailing
+@model IdentityStore.Core.Mailing.Implementation.ViewModels.DateOfBirthCorrectedViewModel
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+@Include("Head", Model.MailInfo, typeof(MailInfo))
+
+<body>
+    <table class="table-mail-container" align="center" width="600" cellpadding="0" cellspacing="0">
+        <tbody>
+            <tr>
+                <td vAlign="top" rowspan="1" colspan="1">
+                    <table class="table-mail-content" cellpadding="0" cellspacing="0" border="0">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    @Include("MailHeader")
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <table align="center" class="table-mail-body">
+                                        <tbody>
+                                            <tr>
+                                                <td>
+
+                                                    <!-- Header -->
+                                                    <table align="center" width="100%" cellspacing="0" cellpadding="0">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td style="text-align: center;">
+                                                                    <p class="mail-title">De geboortedatum van je account is gewijzigd</p>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                    <p>Beste <span class="blurrable">@Model.MailInfo.Firstname @Model.MailInfo.Lastname</span>,</p>
+
+                                                    <p>Bij nazicht op de juistheid van onze gegevens hebben wij vastgesteld dat de geboortedatum die je hebt ingegeven op jouw SD Worx account waarschijnlijk niet correct was. Daarom hebben wij deze automatisch aangepast op basis van de info van jouw werkgever. Wij gebruiken jouw geboortedatum immers om een bijkomende controle van je identiteit te kunnen uitvoeren en het is daarom belangrijk dat deze correct is. Hiernaast heeft SD Worx ook een wettelijke plicht om jouw gegevens correct en up-to-date te houden.</p>
+
+                                                    <p>Je geboortedatum is nu ingesteld op <span class="blurrable">@Model.NewDateOfBirth</span>.</p>
+
+                                                    <p>Je kan bovendien jouw SD Worx accountgegevens ten alle tijde consulteren en wijzigen via <a href="@Model.PortalProfileUrl" target="_blank">Mijn account</a>.</p>
+
+                                                    <p>Wanneer deze wijziging volgens jou niet correct is, neem dan contact op met jouw werkgever.</p>
+                                                 
+                                                    @Include("MailGreeting", "nl", typeof(string))
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td vAlign="top" rowspan="1" colspan="1">
+                    <table class="table-mail-footer" cellpadding="0" cellspacing="0" border="0">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    @Include("MailFooter", "NL", typeof(string))
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

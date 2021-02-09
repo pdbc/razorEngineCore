@@ -22,7 +22,7 @@ namespace RazorEngineConsole
                 instance.Model = new TestModel()
                 {
                     Name = "Hello",
-                    Items = new[] { 3, 1, 2 }
+                    //Items = new[] { 3, 1, 2 }
                 };
             });
 

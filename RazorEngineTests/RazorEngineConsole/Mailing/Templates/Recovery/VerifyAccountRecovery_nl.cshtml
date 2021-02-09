@@ -1,0 +1,99 @@
+﻿@using IdentityStore.Core.Mailing
+@model IdentityStore.Core.Mailing.Implementation.ViewModels.VerifyAccountRecoveryViewModel
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+@Include("Head", Model.MailInfo, typeof(MailInfo))
+
+<body>
+    <table class="table-mail-container" align="center" width="600" cellpadding="0" cellspacing="0">
+        <tbody>
+            <tr>
+                <td vAlign="top" rowspan="1" colspan="1">
+                    <table class="table-mail-content" cellpadding="0" cellspacing="0" border="0">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    @Include("MailHeader")
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <table align="center" class="table-mail-body">
+                                        <tbody>
+                                            <tr>
+                                                <td>
+
+                                                    <!-- Header -->
+                                                    <table align="center" width="100%" cellspacing="0" cellpadding="0">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td style="text-align: center;">
+                                                                    <p class="mail-title">Accountherstel</p>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+
+                                                    <div class="horizontal-divider-whitespace">&nbsp;</div>
+
+                                                    <!-- Salutation -->
+                                                    <p>Beste <span class="blurrable">@Model.MailInfo.Firstname @Model.MailInfo.Lastname</span>,</p>
+
+                                                    <!-- Action -->
+
+                                                    <p>
+                                                        Je ontvangt deze e-mail omdat we willen nagaan of je toegang hebt tot dit e-mailadres.
+                                                        Gebruik de volgende verificatiecode om je e-mailadres te bevestigen en verder te gaan met het herstellen van je SD Worx-account.
+                                                        Na de verificatie kun je een nieuw wachtwoord invoeren.
+                                                    </p>
+
+
+                                                    <table class="table-verification-code" align="center" border="0" cellpadding="0" cellspacing="0">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td style="text-align: center">
+                                                                    <span class="verification-code">
+                                                                        <span class="blurrable">@Model.VerificationCode</span><br />
+                                                                    </span>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                    <br />
+
+                                                    <p>
+                                                        <b>Deze verificatiecode is slechts voor beperkte tijd geldig en kan maar één keer gebruikt worden. </b>
+                                                        Als je geen herstel hebt aangevraagd, heeft waarschijnlijk een andere gebruiker je e-mailadres ingevoerd.
+                                                        In dit geval kun je dit bericht gewoon negeren. Je wachtwoord wordt niet gewijzigd tenzij je actie onderneemt.
+                                                    </p>
+
+                                                    @Include("MailGreeting", "nl", typeof(string))
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td vAlign="top" rowspan="1" colspan="1">
+                    <table class="table-mail-footer" cellpadding="0" cellspacing="0" border="0">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    @Include("MailFooter", "NL", typeof(string))
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

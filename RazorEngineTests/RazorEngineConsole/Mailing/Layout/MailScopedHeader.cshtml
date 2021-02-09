@@ -1,0 +1,27 @@
+﻿@model String
+
+@Include("HorizontalDivider")
+
+<div class="horizontal-divider-whitespace">&nbsp;</div>
+
+<table align="center" class="table-mail-header" cellspacing="0" cellpadding="0" border="0">
+    <tbody>
+        <tr>
+            <td style="text-align: center;">
+                <span class="blurrable">
+                    <img alt="SD Worx" class="mail-sdworx-logo" src="cid:logo_sdworx" height="40" />
+                </span>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align: center;">
+                <div style="font-size: 10px; height: 10px;">&nbsp;</div>
+                <div class="blurrable">
+                    <span class="appscope">@Model</span>
+                </div>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<div class="horizontal-divider-whitespace">&nbsp;</div>

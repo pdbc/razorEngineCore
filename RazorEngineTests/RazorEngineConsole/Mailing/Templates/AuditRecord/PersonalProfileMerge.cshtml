@@ -1,0 +1,109 @@
+﻿@using IdentityStore.Core.Mailing
+@model IdentityStore.Core.Mailing.Implementation.ViewModels.AuditProfileMergeViewModel
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+@Include("Head", Model.MailInfo, typeof(MailInfo))
+
+<body>
+    <table class="table-mail-container" align="center" width="600" cellpadding="0" cellspacing="0">
+        <tbody>
+            <tr>
+                <td vAlign="top" rowspan="1" colspan="1">
+                    <table class="table-mail-content" cellpadding="0" cellspacing="0" border="0">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    @Include("MailHeader")
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <table align="center" class="table-mail-body">
+                                        <tbody>
+                                            <tr>
+                                                <td>
+
+                                                    <!-- Header -->
+                                                    <table align="center" width="100%" cellspacing="0" cellpadding="0">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td style="text-align: center;">
+                                                                    <p class="mail-title">Your SD Worx-accounts have been merged</p>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                    <p>Dear <span class="blurrable">@Model.MailInfo.Firstname @Model.MailInfo.Lastname</span>,</p>
+
+                                                    <p>You are receiving this e-mail as your SD Worx accounts have been merged. You may have done this yourself via My Account, or we may have done it for you. If, when reviewing our data, we establish that one person has several accounts, these are merged automatically.</p>
+
+
+                                                    <!-- Action -->
+                                                    <table width="100%" cellspacing="0" cellpadding="0">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td class="border-secondary">
+                                                                    <p class="text-secondary">
+                                                                        <strong>Your login email address:</strong>
+                                                                    </p>
+                                                                    <ul>
+                                                                        <li class="text-secondary"><span class="blurrable">@Model.EmailAddress</span></li>
+                                                                        <li>your chosen password</li>
+                                                                    </ul>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="border-padding">
+                                                                    <p>
+                                                                        <strong>Your data:</strong>
+                                                                    </p>
+                                                                    <ul class="mail-unordered-list">
+                                                                        <li>First name: <span class="blurrable">@Model.Firstname</span></li>
+                                                                        <li>Last name: <span class="blurrable">@Model.Lastname</span></li>
+                                                                        <li>Date of birth: <span class="blurrable">@Model.DateOfBirth</span></li>
+                                                                        <li>Email address: <span class="blurrable">@Model.EmailAddress</span></li>
+                                                                        @if (Model.HasMobileNumber())
+                                                                        {
+                                                                            <li>Mobile number: <span class="blurrable">+@Model.MobileNumberPrefix@Model.MobileNumber</span></li>
+                                                                        }
+                                                                    </ul>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+
+
+                                                    <p>Your other account <span class="blurrable">@Model.PreviousEmailAddress</span> has been de-activated. You will not be able to logon with these credentials. All applications are now available with the following account <span class="blurrable">@Model.EmailAddress</span>.</p>
+
+                                                    <p>You can also view and change your SD Worx account details in <a href="@Model.PortalProfileUrl" target="_blank">My account</a> at any time.</p>
+
+                                                    @Include("MailGreeting", "en", typeof(string))
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td vAlign="top" rowspan="1" colspan="1">
+                    <table class="table-mail-footer" cellpadding="0" cellspacing="0" border="0">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    @Include("MailFooter", "EN", typeof(string))
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

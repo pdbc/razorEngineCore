@@ -1,0 +1,115 @@
+﻿@using IdentityStore.Core.Mailing
+@model IdentityStore.Core.Mailing.Implementation.ViewModels.AuditProfileViewModel
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+@Include("Head", Model.MailInfo, typeof(MailInfo))
+
+<body>
+    <table class="table-mail-container" align="center" width="600" cellpadding="0" cellspacing="0">
+        <tbody>
+            <tr>
+                <td vAlign="top" rowspan="1" colspan="1">
+                    <table class="table-mail-content" cellpadding="0" cellspacing="0" border="0">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    @Include("MailHeader")
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <table align="center" class="table-mail-body">
+                                        <tbody>
+                                            <tr>
+                                                <td>
+
+                                                    <!-- Header -->
+                                                    <table align="center" width="100%" cellspacing="0" cellpadding="0">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td style="text-align: center;">
+                                                                    <p class="mail-title">Congratulations!</p>
+                                                                    <p class="mail-subtitle">Your new SD Worx-account has been created successfully</p>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+
+                                                    <!-- Action -->
+                                                    <table width="100%" cellspacing="0" cellpadding="0">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td class="border-secondary">
+                                                                    <p class="text-secondary">
+                                                                        <strong>You can now log in with:</strong>
+                                                                    </p>
+                                                                    <ul>
+                                                                        <li class="text-secondary"><span class="blurrable">@Model.EmailAddress</span></li>
+                                                                        <li>your chosen password</li>
+                                                                    </ul>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="border-padding">
+                                                                    <p>
+                                                                        <strong>Your data:</strong>
+                                                                    </p>
+                                                                    <ul class="mail-unordered-list">
+                                                                        <li>First name: <span class="blurrable">@Model.Firstname</span></li>
+                                                                        <li>Last name: <span class="blurrable">@Model.Lastname</span></li>
+                                                                        <li>Date of birth: <span class="blurrable">@Model.DateOfBirth</span></li>
+                                                                        <li>Email address: <span class="blurrable">@Model.EmailAddress</span></li>
+                                                                        @if (Model.HasMobileNumber())
+                                                                        {
+                                                                            <li>Mobile number: <span class="blurrable">+@Model.MobileNumberPrefix@Model.MobileNumber</span></li>
+                                                                        }
+                                                                        @if (Model.HasRecoveryEmailAddresses())
+                                                                        {
+                                                                            <li>
+                                                                                Recovery email addresses (not usable for login):
+                                                                                <ul>
+                                                                                    @foreach (var recoveryEmailAddress in Model.RecoveryEmailAddresses)
+                                                                                    {
+                                                                                        <li><span class="blurrable">@recoveryEmailAddress</span></li>
+                                                                                    }
+                                                                                </ul>
+                                                                            </li>
+                                                                        }
+                                                                    </ul>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+
+                                                    <p>If your data is incorrect, please go to your "Account" page to correct them.</p>
+                                                    
+                                                    @Include("MailGreeting", "en", typeof(string))
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td vAlign="top" rowspan="1" colspan="1">
+                    <table class="table-mail-footer" cellpadding="0" cellspacing="0" border="0">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    @Include("MailFooter", "EN", typeof(string))
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

@@ -1,0 +1,95 @@
+﻿@using IdentityStore.Core.Mailing
+@model IdentityStore.Core.Mailing.Implementation.ViewModels.VerifyAccountViewModel
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+@Include("Head", Model.MailInfo, typeof(MailInfo))
+
+<body>
+    <table class="table-mail-container" align="center" width="600" cellpadding="0" cellspacing="0">
+        <tbody>
+            <tr>
+                <td vAlign="top" rowspan="1" colspan="1">
+                    <table class="table-mail-content" cellpadding="0" cellspacing="0" border="0">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    @Include("MailHeader")
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <table align="center" class="table-mail-body">
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <!-- Header -->
+                                                    <table align="center" width="100%" cellspacing="0" cellpadding="0">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td style="text-align: center;">
+                                                                    <p class="mail-title">Bevestig je e-mailadres</p>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+
+                                                    <div class="horizontal-divider-whitespace">&nbsp;</div>
+
+                                                    <!-- Salutation -->
+                                                    <p>Beste <span class="blurrable">@Model.MailInfo.Firstname @Model.MailInfo.Lastname</span>,</p>
+
+                                                    <!-- Action -->
+                                                    <p>
+                                                        Bedankt voor het gebruik van SD Worx. U ontvangt deze e-mail omdat we willen controleren of u toegang hebt tot dit e-mailadres.
+                                                        Gebruik de volgende verificatiecode om de geldigheid van uw e-mailadres te bevestigen en door te gaan met de wijzigingen aan uw SD Worx-account.
+                                                    </p>
+
+                                                    <table class="table-verification-code" align="center" border="0" cellpadding="0" cellspacing="0">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td style="text-align: center">
+                                                                    <span class="verification-code">
+                                                                        <span class="blurrable">@Model.VerificationCode</span><br />
+                                                                    </span>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                    <br />
+
+                                                    <p>
+                                                        <b>Deze verificatiecode is slechts voor beperkte tijd geldig en kan maar één keer gebruikt worden. </b>
+                                                        Als u niet heeft gevraagd om een SD Worx-account te wijzigen, is het waarschijnlijk dat een andere gebruiker per ongeluk uw e-mailadres heeft ingevoerd.
+                                                        In dit geval kunt u dit bericht gewoon negeren en wordt er geen account gewijzigd.
+                                                    </p>
+
+                                                    @Include("MailGreeting", "nl", typeof(string))
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td vAlign="top" rowspan="1" colspan="1">
+                    <table class="table-mail-footer" cellpadding="0" cellspacing="0" border="0">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    @Include("MailFooter", "NL", typeof(string))
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

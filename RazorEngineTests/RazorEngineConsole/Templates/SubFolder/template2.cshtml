@@ -1,17 +1,9 @@
-﻿@inherits RazorEngineCore.RazorEngineTemplateBase<RazorEngineConsole.Models.TestModel>
-
-@{
-    Layout = ""MyLayout"";
-}
+﻿@using Microsoft.CodeAnalysis
+@inherits RazorEngineCore.RazorEngineTemplateBase<RazorEngineConsole.Models.TestModel>
 
 Default template2
 
-Hello @Model.Name 
-
-@foreach (var item in @Model.Items)
-{
-    <div>@item</div>
-}
+Hello @Model.Name
 
 <div data-name="" @Model.Name ""></div>
 

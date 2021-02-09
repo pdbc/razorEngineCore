@@ -1,0 +1,75 @@
+﻿@using IdentityStore.Core.Mailing
+@model IdentityStore.Core.Mailing.Implementation.ViewModels.DateOfBirthCorrectedViewModel
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+@Include("Head", Model.MailInfo, typeof(MailInfo))
+
+<body>
+    <table class="table-mail-container" align="center" width="600" cellpadding="0" cellspacing="0">
+        <tbody>
+            <tr>
+                <td vAlign="top" rowspan="1" colspan="1">
+                    <table class="table-mail-content" cellpadding="0" cellspacing="0" border="0">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    @Include("MailHeader")
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <table align="center" class="table-mail-body">
+                                        <tbody>
+                                            <tr>
+                                                <td>
+
+                                                    <!-- Header -->
+                                                    <table align="center" width="100%" cellspacing="0" cellpadding="0">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td style="text-align: center;">
+                                                                    <p class="mail-title">La date de naissance sur votre compte a été modifiée</p>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                    <p>Chère/Cher <span class="blurrable">@Model.MailInfo.Firstname @Model.MailInfo.Lastname</span>,</p>
+
+                                                    <p>Après vérification de l'exactitude de nos données, nous avons constaté que la date de naissance que vous aviez renseignée sur votre compte SD Worx n'était probablement pas correcte. Par conséquent, nous l'avons automatiquement adaptée sur la base des informations de votre employeur. Nous utilisons en effet votre date de naissance pour pouvoir effectuer un contrôle supplémentaire de votre identité. Il est donc important qu'elle soit exacte. En outre, la loi impose également à SD Worx de maintenir vos données correctes et à jour.</p>
+
+                                                    <p>Votre date de naissance est à présent fixée au <span class="blurrable">@Model.NewDateOfBirth</span>.</p>
+                                                    
+                                                    <p>Vous pouvez, par ailleurs, consulter et modifier à tout moment les données de votre compte SD Worx dans <a href="@Model.PortalProfileUrl" target="_blank">Mon compte</a>.</p>
+
+                                                    <p>Si vous pensez que cette modification n'est pas correcte, prenez contact avec votre employeur.</p>
+
+                                                    @Include("MailGreeting", "fr", typeof(string))
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td vAlign="top" rowspan="1" colspan="1">
+                    <table class="table-mail-footer" cellpadding="0" cellspacing="0" border="0">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    @Include("MailFooter", "FR", typeof(string))
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

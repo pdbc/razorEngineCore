@@ -7,13 +7,10 @@ namespace RazorEngineConsole.CustomTemplate
 {
     public class LayoutTemplateBase : RazorEngineTemplateBase
     {
-        public LayoutTemplateBase(IRazorEngineCompiledTemplate<LayoutTemplateBase> compile, Dictionary<string, IRazorEngineCompiledTemplate<LayoutTemplateBase>> toDictionary)
-        {
-            throw new NotImplementedException();
-        }
-
         public Func<string, object, string> IncludeCallback { get; set; }
         public Func<string> RenderBodyCallback { get; set; }
+        public Func<string> RenderTextBodyCallback { get; set; }
+
         public string Layout { get; set; }
 
         public string Include(string key, object model = null)
@@ -24,6 +21,11 @@ namespace RazorEngineConsole.CustomTemplate
         public string RenderBody()
         {
             return this.RenderBodyCallback();
+        }
+
+        public string RenderTextMail()
+        {
+            return this.RenderTextBodyCallback();
         }
     }
 }
