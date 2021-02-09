@@ -1,0 +1,29 @@
+﻿@inherits RazorEngineCore.RazorEngineTemplateBase<RazorEngineConsole.Models.TestModel>
+
+Default template2 (NL)
+
+Hello @Model.Name 
+
+@foreach (var item in @Model.Items)
+{
+    <div>@item</div>
+}
+
+<div data-name="" @Model.Name ""></div>
+
+<area>
+@{ RecursionTest(3); }
+</area>
+
+@{
+    void RecursionTest(int level)
+    {
+        if (level <= 0)
+        {
+            return;
+        }
+
+        <div>LEVEL: @level</div>
+        @{ RecursionTest(level - 1); }
+    }
+}";

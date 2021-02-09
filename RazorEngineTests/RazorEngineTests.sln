@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30717.126
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RazorEngineConsole", "RazorEngineConsole\RazorEngineConsole.csproj", "{D6AD1F35-EFCC-4BCF-91EB-1317FDE370C6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RazorWebApi", "..\RazorWebApi\RazorWebApi.csproj", "{0148A9F6-B136-46D7-95F1-6FD4DBB72B5B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D6AD1F35-EFCC-4BCF-91EB-1317FDE370C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D6AD1F35-EFCC-4BCF-91EB-1317FDE370C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D6AD1F35-EFCC-4BCF-91EB-1317FDE370C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D6AD1F35-EFCC-4BCF-91EB-1317FDE370C6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0148A9F6-B136-46D7-95F1-6FD4DBB72B5B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0148A9F6-B136-46D7-95F1-6FD4DBB72B5B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0148A9F6-B136-46D7-95F1-6FD4DBB72B5B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0148A9F6-B136-46D7-95F1-6FD4DBB72B5B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D7BE63D2-42BC-4133-B5CB-E11D365FB9F7}
+	EndGlobalSection
+EndGlobal
