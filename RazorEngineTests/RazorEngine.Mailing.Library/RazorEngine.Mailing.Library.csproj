@@ -1,0 +1,45 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Templates\Mails\MigrationAuditRecord\" />
+    <Folder Include="Templates\Mails\PersonalProfileMergedAuditRecord\" />
+    <Folder Include="Templates\Mails\VerifyAccountForRegistration\" />
+    <Folder Include="Templates\Mails\VerifyAccountForRecovery\" />
+    <Folder Include="Templates\Mails\RegistrationAuditRecord\" />
+    <Folder Include="Templates\Mails\ProfileDateOfBirthCorrectedAuditRecord\" />
+    <Folder Include="Templates\Mails\PasswordChangedAuditRecord\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="RazorEngineCore" Version="2020.10.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Templates\Layout\footer.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Templates\Layout\greeting.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Templates\Layout\header.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Templates\Layout\horizontal-divider.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Templates\Layout\layout.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Templates\Layout\stylesheet.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Templates\Layout\template3-text.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>

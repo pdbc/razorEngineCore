@@ -1,0 +1,36 @@
+﻿@inherits RazorEngineCore.RazorEngineTemplateBase<RazorEngine.Mailing.Library.Templates.BaseTemplate.InternalAnonymousTypeWrapper>
+
+<br />
+
+@{
+    var language = (Model.Model.ToString() ?? "en").ToLowerInvariant();
+
+    if (language == "nl")
+    {
+        <p>
+            Met vriendelijke groeten,<br />
+            Het SD Worx team
+        </p>
+    }
+    else if (language == "fr")
+    {
+        <p>
+            Cordialement,<br />
+            L'équipe de SD Worx
+        </p>
+    }
+    else if (language == "de")
+    {
+        <p>
+            Mit freundlichen Grüßen,<br />
+            Das SD Worx Team
+        </p>
+    }
+    else
+    {
+        <p>
+            Friendly regards,<br />
+            The SD Worx team
+        </p>
+    }
+}

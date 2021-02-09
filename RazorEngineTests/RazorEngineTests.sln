@@ -7,7 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RazorEngineConsole", "Razor
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RazorWebApi", "..\RazorWebApi\RazorWebApi.csproj", "{0148A9F6-B136-46D7-95F1-6FD4DBB72B5B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RazorEngingeNetCoreConsole", "RazorEngingeNetCoreConsole\RazorEngingeNetCoreConsole.csproj", "{04D843F6-C8D5-4525-90B0-BB8166CCA052}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RazorEngingeNetCoreConsole", "RazorEngingeNetCoreConsole\RazorEngingeNetCoreConsole.csproj", "{04D843F6-C8D5-4525-90B0-BB8166CCA052}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RazorEngine.Mailing.Library", "RazorEngine.Mailing.Library\RazorEngine.Mailing.Library.csproj", "{0FDFDEF6-6799-43C0-B65E-ED393D4AEF07}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{04D843F6-C8D5-4525-90B0-BB8166CCA052}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{04D843F6-C8D5-4525-90B0-BB8166CCA052}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{04D843F6-C8D5-4525-90B0-BB8166CCA052}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0FDFDEF6-6799-43C0-B65E-ED393D4AEF07}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0FDFDEF6-6799-43C0-B65E-ED393D4AEF07}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0FDFDEF6-6799-43C0-B65E-ED393D4AEF07}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0FDFDEF6-6799-43C0-B65E-ED393D4AEF07}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
