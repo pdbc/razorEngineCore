@@ -1,0 +1,49 @@
+@using RazorEngine.Mailing.Library.Models
+
+@inherits RazorEngineCore.RazorEngineTemplateBase<RazorEngine.Mailing.Library.Models.VerifyAccountRecoveryViewModel>
+
+@{
+    Layout = "layout";
+}
+
+<!-- Header -->
+<table align="center" width="100%" cellspacing="0" cellpadding="0">
+    <tbody>
+        <tr>
+            <td style="text-align: center;">
+                <p class="mail-title">Account recovery</p>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<div class="horizontal-divider-whitespace">&nbsp;</div>
+
+<!-- Salutation -->
+<p>Hi <span class="blurrable">@Model.MailInfo.Firstname @Model.MailInfo.Lastname</span>,</p>
+
+<!-- Action -->
+<p>
+    You are receiving this email because we want to verify that you have access to this email address.
+    Use the following verification code to confirm the validity of your email address and to continue with the recovery of your SD Worx-account.
+    After a successful verification you can enter a new password.
+</p>
+
+<table class="table-verification-code" align="center" border="0" cellpadding="0" cellspacing="0">
+    <tbody>
+        <tr>
+            <td style="text-align: center">
+                <span class="verification-code">
+                    <span class="blurrable">@Model.VerificationCode</span><br />
+                </span>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<br />
+
+<p>
+    <b>This verification code is only valid for a short period of time and you can only use it once. </b>
+    If you did not request a recovery, it is likely that another user entered your email address.
+    In this case, you can simply ignore this message. Your password will not be changed unless you take action.
+</p>

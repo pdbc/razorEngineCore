@@ -3,5 +3,6 @@
     public interface IMailViewModel
     {
         MailInfo MailInfo { get; set; }
+        
     }
 }

@@ -1,0 +1,28 @@
+﻿@using System
+@using System.Linq
+@using RazorEngine.Mailing.Library
+@using RazorEngine.Mailing.Library.Models
+
+@inherits RazorEngineCore.RazorEngineTemplateBase<RazorEngine.Mailing.Library.Models.InvitationViewModel>
+
+    Guten Tag @Model.MailInfo.Firstname @Model.MailInfo.Lastname,
+
+    @Model.AccountOfficialName lädt Sie zur Nutzung von @Model.ApplicationScope von SD Worx ein.
+
+    @Model.AccountOfficialName hat uns folgende Angaben zur Verfügung gestellt:
+
+    - Vorname: @Model.MailInfo.Firstname
+    - Nachname: @Model.MailInfo.Lastname
+
+    Die Angaben stimmen nicht? Nehmen Sie diese Einladung nicht an und wenden Sie sich an Ihren Arbeitgeber.
+
+    - Einladung annehmen: @Model.Url
+
+    Was müssen Sie tun:
+
+    1. Klicken Sie auf die vorstehende Link „Einladung annehmen“.
+    2. Melden Sie sich mit Ihrem persönlichen SD Worx-Konto an. Sollten Sie noch kein Konto haben, registrieren Sie sich zunächst.
+    3. Dann können Sie die Einladung annehmen und @Model.ApplicationScope für @Model.AccountOfficialName nutzen.
+
+    Mit freundlichen Grüßen,
+    Das SD Worx Team

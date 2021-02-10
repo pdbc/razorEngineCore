@@ -1,0 +1,28 @@
+@using System
+@using System.Linq
+@using RazorEngine.Mailing.Library
+@using RazorEngine.Mailing.Library.Models
+
+@inherits RazorEngineCore.RazorEngineTemplateBase<RazorEngine.Mailing.Library.Models.InvitationViewModel>
+
+    Hi @Model.MailInfo.Firstname @Model.MailInfo.Lastname,
+
+    @Model.AccountOfficialName invites you to use @Model.ApplicationScope by SD Worx.
+
+    @Model.AccountOfficialName provided us the following information:
+
+    - First name: @Model.MailInfo.Firstname
+    - Last name: @Model.MailInfo.Lastname
+
+    Information incorrect? Do not accept this invitation and contact your employer.
+
+    - Accept invitation: @Model.Url
+
+    What do you need to do:
+
+    1. Use the "Accept invitation" link above.
+    2. Login with your personal SD Worx account, or register if you don't have an account yet.
+    3. You will then be able to accept the invitation and use @Model.ApplicationScope for @Model.AccountOfficialName.
+
+    Friendly regards,
+    The SD Worx team

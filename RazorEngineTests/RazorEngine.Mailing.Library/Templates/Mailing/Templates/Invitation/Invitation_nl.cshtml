@@ -1,0 +1,190 @@
+@using IdentityStore.Core.Mailing
+@using IdentityStore.Core.Mailing.Implementation.Templates.Shared
+@model IdentityStore.Core.Mailing.ViewModels.InvitationViewModel
+
+@{
+    var applicationInfoCustomText = "";
+    var applicationInfoHtml = "";
+    var mailTitle = "";
+
+    if (@Model.Applications.Count == 0)
+    {
+        mailTitle = "Je bent uitgenodigd om <span class=\"blurrable\">" + @Model.ApplicationScope + "</span> te gebruiken";
+        applicationInfoCustomText = @Model.ApplicationScope + " van SD Worx.";
+        applicationInfoHtml = "<span class=\"blurrable bold\">" + Model.ApplicationScope + " van SD Worx.</span>";
+    }
+    else if (@Model.Applications.Count == 1)
+    {
+        mailTitle = "Je bent uitgenodigd om <span class=\"blurrable\">" + @Model.Applications.FirstOrDefault() + "</span> te gebruiken";
+        applicationInfoCustomText = "de toepassing " + @Model.Applications.FirstOrDefault() + " in " + @Model.ApplicationScope + ".";
+        applicationInfoHtml = "<span>de toepassing </span>";
+        applicationInfoHtml += "<span class=\"blurrable bold\">" + @Model.Applications.FirstOrDefault() + "</span>";
+        applicationInfoHtml += "<span> in </span>";
+        applicationInfoHtml += "<span class=\"blurrable bold\">" + @Model.ApplicationScope + "</span>.";
+    }
+    else
+    {
+        mailTitle = "Je bent uitgenodigd om nieuwe toepassingen te gebruiken";
+        applicationInfoCustomText = "de toepassingen ";
+        applicationInfoHtml = "<span> de toepassingen </span>";
+
+        applicationInfoCustomText += RazorHelperExtensions.WriteOutApplicationListCustomText(Model.Applications, "nl");
+        applicationInfoHtml += @RazorHelperExtensions.WriteOutApplicationListHtml(Model.Applications, "nl");
+
+        applicationInfoCustomText += " in " + Model.ApplicationScope + ".";
+        applicationInfoHtml += " in " + "<span class=\"blurrable bold\">" + Model.ApplicationScope + "</span>.";
+    }
+}
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+@Include("Head", Model.MailInfo, typeof(MailInfo))
+
+<body>
+    <table class="table-mail-container" align="center" width="600" cellpadding="0" cellspacing="0">
+        <tbody>
+            <tr>
+                <td vAlign="top" rowspan="1" colspan="1">
+                    <table class="table-mail-content" cellpadding="0" cellspacing="0" border="0">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    @Include("MailScopedHeader", Model.ApplicationScope, typeof(String))
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <table align="center" class="table-mail-body">
+                                        <tbody>
+                                            <tr>
+                                                <td>
+
+                                                    <!-- Header -->
+                                                    <table align="center" width="100%" cellspacing="0" cellpadding="0">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td style="text-align: center;">
+                                                                    <p class="mail-title">@mailTitle</p>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+
+                                                    <div class="horizontal-divider-whitespace">&nbsp;</div>
+
+                                                    <!-- Salutation -->
+                                                    <p>Dag <span class="blurrable ">@Model.MailInfo.Firstname @Model.MailInfo.Lastname</span>,</p>
+
+                                                    <!-- Action -->
+                                                    <p>
+                                                        <span class="blurrable bold">@Model.AccountOfficialName</span> nodigt je uit om aan de slag te gaan met @applicationInfoHtml
+                                                        <br />
+                                                    </p>
+
+                                                    <!-- Employee Profile Info -->
+                                                    <table class="table-mail-highlight" cellpadding="0" cellspacing="0">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td style="padding: 15px;">
+                                                                    <div style="margin-bottom: 10px;">
+                                                                        <span class="blurrable">@Model.AccountOfficialName</span> heeft ons de volgende gegevens meegedeeld:
+                                                                    </div>
+
+                                                                    <table class="table-mail-form" cellpadding="0" cellspacing="0">
+                                                                        <tbody>
+                                                                            <tr>
+                                                                                <td class="first">Voornaam:</td>
+                                                                                <td><span class="blurrable">@Model.MailInfo.Firstname</span></td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td class="first">Achternaam:</td>
+                                                                                <td><span class="blurrable">@Model.MailInfo.Lastname</span></td>
+                                                                            </tr>
+                                                                        </tbody>
+                                                                    </table>
+
+                                                                    <div style="margin-top: 10px;">
+                                                                        <span class="small">Is deze informatie fout? Aanvaard deze uitnodiging dan niet en neem contact op met je werkgever.</span>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+
+                                                    <!-- Call to Action -->
+                                                    <br />
+                                                    <table align="center" class="table-primary-action" border="0" cellpadding="0" cellspacing="0">
+                                                        <tr>
+                                                            <td style="text-align: center">
+                                                                <a style="text-decoration: none;" class="primary-action" href="@Model.Url" target="_blank">
+                                                                    <span>Uitnodiging accepteren</span>
+                                                                </a>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                    <br />
+
+                                                    <!-- How to proceed -->
+                                                    <p>
+                                                        Wat moet je doen?
+                                                    </p>
+
+                                                    <ol class="mail-ordered-list">
+                                                        <li>Klik op de knop 'Uitnodiging accepteren' hierboven.</li>
+                                                        <li>Log in met je persoonlijke SD Worx-account of maak een account aan als je nog er geen hebt.</li>
+                                                        <li>Vervolgens kun je de uitnodiging accepteren en <span class="blurrable">@Model.ApplicationScope</span> gebruiken voor <span class="blurrable">@Model.AccountOfficialName</span>.</li>
+                                                    </ol>
+
+                                                    @Include("MailGreeting", "nl", typeof(string))
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td vAlign="top" rowspan="1" colspan="1">
+                    <table class="table-mail-footer" cellpadding="0" cellspacing="0" border="0">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    @Include("MailFooter", "NL", typeof(string))
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
+
+<CustomText>
+    Dag @Model.MailInfo.Firstname @Model.MailInfo.Lastname,
+
+    @Model.AccountOfficialName nodigt je uit om aan de slag te gaan met @applicationInfoCustomText
+
+    @Model.AccountOfficialName heeft ons de volgende gegevens meegedeeld:
+
+    - Voornaam: @Model.MailInfo.Firstname
+    - Achternaam: @Model.MailInfo.Lastname
+
+    Is deze informatie fout? Aanvaard deze uitnodiging dan niet en neem contact op met je werkgever.
+
+    - Uitnodiging accepteren: @Model.Url
+
+    Wat moet je doen?
+
+    1. Gebruik de "Uitnodiging accepteren" link hierboven.
+    2. Log in met je persoonlijke SD Worx-account of maak een account aan als je nog er geen hebt.
+    3. Vervolgens kun je de uitnodiging accepteren en @Model.ApplicationScope gebruiken voor @Model.AccountOfficialName.
+
+    Met vriendelijke groeten,
+    Het SD Worx team
+</CustomText>

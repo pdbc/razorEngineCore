@@ -1,0 +1,28 @@
+﻿@using RazorEngine.Mailing.Library.Models
+
+@inherits RazorEngineCore.RazorEngineTemplateBase<RazorEngine.Mailing.Library.Models.DateOfBirthCorrectedViewModel>
+
+@{
+    Layout = "layout";
+}
+
+<!-- Header -->
+<table align="center" width="100%" cellspacing="0" cellpadding="0">
+    <tbody>
+        <tr>
+            <td style="text-align: center;">
+                <p class="mail-title">Das Geburtsdatum in Ihrem Konto wurde geändert</p>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>Sehr geehrter <span class="blurrable">@Model.MailInfo.Firstname @Model.MailInfo.Lastname</span>,</p>
+
+<p>Bei der Überprüfung unserer Daten haben wir festgestellt, dass das Geburtsdatum, das Sie in Ihrem SD Worx-Konto angegeben haben, wahrscheinlich nicht richtig war. Darum haben wir dieses automatisch auf der Grundlage der Informationen Ihres Arbeitgebers angepasst. Wir verwenden Ihr Geburtsdatum, um eine zusätzliche Überprüfung Ihrer Identität durchzuführen, und es ist daher wichtig, dass dieses korrekt ist. Zudem ist SD Worx auch gesetzlich verpflichtet, Ihre Daten korrekt und auf dem neuesten Stand zu halten.</p>
+
+<p>Ihr Geburtsdatum ist jetzt <span class="blurrable">@Model.NewDateOfBirth</span>.</p>
+
+<p>Sie können Ihre Kontodaten bei SD Worx jederzeit über <a href="@Model.PortalProfileUrl" target="_blank">Mein Konto</a> einsehen und ändern.</p>
+
+<p>Wenn diese Änderung Ihrer Meinung nach nicht richtig ist, wenden Sie sich bitte an Ihren Arbeitgeber.</p>
+

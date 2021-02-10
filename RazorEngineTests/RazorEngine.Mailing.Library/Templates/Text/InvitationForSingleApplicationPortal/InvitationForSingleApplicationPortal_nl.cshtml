@@ -1,0 +1,28 @@
+@using System
+@using System.Linq
+@using RazorEngine.Mailing.Library
+@using RazorEngine.Mailing.Library.Models
+
+@inherits RazorEngineCore.RazorEngineTemplateBase<RazorEngine.Mailing.Library.Models.InvitationViewModel>
+
+    Dag @Model.MailInfo.Firstname @Model.MailInfo.Lastname,
+
+    @Model.AccountOfficialName nodigt je uit om aan de slag te gaan met @Model.ApplicationScope van SD Worx.
+
+    @Model.AccountOfficialName heeft ons de volgende gegevens meegedeeld:
+
+    - Voornaam: @Model.MailInfo.Firstname
+    - Achternaam: @Model.MailInfo.Lastname
+
+    Is deze informatie fout? Aanvaard deze uitnodiging dan niet en neem contact op met je werkgever.
+
+    - Uitnodiging accepteren: @Model.Url
+
+    Wat moet je doen?
+
+    1. Gebruik de "Uitnodiging accepteren" link hierboven.
+    2. Log in met je persoonlijke SD Worx-account of maak een account aan als je nog er geen hebt.
+    3. Vervolgens kun je de uitnodiging accepteren en @Model.ApplicationScope gebruiken voor @Model.AccountOfficialName.
+
+    Met vriendelijke groeten,
+    Het SD Worx team

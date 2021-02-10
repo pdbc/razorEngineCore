@@ -1,0 +1,17 @@
+﻿@using RazorEngine.Mailing.Library.Models
+
+@inherits RazorEngineCore.RazorEngineTemplateBase<RazorEngine.Mailing.Library.Models.AuditProfileViewModel>
+
+@{
+    Layout = "layout";
+}
+
+Congratulations!
+Your new SD Worx-account has been created successfully
+
+You can now log in with: @Model.EmailAddress and your chosen password
+
+Your data:
+
+
+If your data is incorrect, please go to your "Account" page to correct them.

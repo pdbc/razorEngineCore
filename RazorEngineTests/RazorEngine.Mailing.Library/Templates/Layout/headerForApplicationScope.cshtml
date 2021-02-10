@@ -1,8 +1,14 @@
-﻿@inherits RazorEngineCore.RazorEngineTemplateBase<System.String>
+﻿@inherits RazorEngineCore.RazorEngineTemplateBase<RazorEngine.Mailing.Library.Templates.BaseTemplate.InternalAnonymousTypeWrapper>
 
-@Include("horizontal-divider")
 
-<div class="horizontal-divider-whitespace">&nbsp;</div>
+@Include("horizontal-divider", Model)
+
+
+@{
+    var ApplicationScope = Model.Model.ToString();
+
+}
+    <div class="horizontal-divider-whitespace">&nbsp;</div>
 
 <table align="center" class="table-mail-header" cellspacing="0" cellpadding="0" border="0">
     <tbody>
@@ -17,7 +23,7 @@
             <td style="text-align: center;">
                 <div style="font-size: 10px; height: 10px;">&nbsp;</div>
                 <div class="blurrable">
-                    <span class="appscope">@Model</span>
+                    <span class="appscope">@ApplicationScope</span>
                 </div>
             </td>
         </tr>

@@ -22,6 +22,8 @@ namespace RazorEngine.Mailing.Library.Templates
                 TemplateName = parts[0];
                 LanguageName = parts[1];
             }
+
+            TemplateBody = File.ReadAllText(FilePath);
         }
 
         public string FilePath { get; set; }
@@ -33,5 +35,7 @@ namespace RazorEngine.Mailing.Library.Templates
         public string Key { get; set; }
 
         public string Name { get; set; }
+
+        public String TemplateBody { get; set; }
     }
 }

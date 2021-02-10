@@ -1,0 +1,191 @@
+﻿@using RazorEngine
+@using IdentityStore.Core.Mailing
+@using IdentityStore.Core.Mailing.Implementation.Templates.Shared
+@model IdentityStore.Core.Mailing.ViewModels.InvitationViewModel
+
+@{
+    var applicationInfoCustomText = "";
+    var applicationInfoHtml = "";
+    var mailTitle = "";
+
+    if (@Model.Applications.Count == 0)
+    {
+        mailTitle = "Sie wurden zur Nutzung von <span class=\"blurrable\">" + @Model.ApplicationScope + "</span> eingeladen";
+        applicationInfoCustomText = "zur Nutzung von " + @Model.ApplicationScope + " von SD Worx ein.";
+        applicationInfoHtml = "zur Nutzung von <span class=\"blurrable bold\">" + Model.ApplicationScope + " von SD Worx ein.</span>";
+    }
+    else if (@Model.Applications.Count == 1)
+    {
+        mailTitle = "Sie wurden eingeladen, <span class=\"blurrable\">" + @Model.Applications.FirstOrDefault() + "</span> zu verwenden";
+        applicationInfoCustomText = "dazu ein, die Anwendung " + @Model.Applications.FirstOrDefault() + " in " + @Model.ApplicationScope + " zu verwenden.";
+        applicationInfoHtml = "<span>dazu ein, die Anwendung </span>";
+        applicationInfoHtml += "<span class=\"blurrable bold\">" + @Model.Applications.FirstOrDefault() + "</span>";
+        applicationInfoHtml += "<span> in </span>";
+        applicationInfoHtml += "<span class=\"blurrable bold\">" + @Model.ApplicationScope + "</span> zu verwenden.";
+    }
+    else
+    {
+        mailTitle = "Sie wurden eingeladen, neue Anwendungen zu verwenden";
+        applicationInfoCustomText = "ein, die Anwendungen  ";
+        applicationInfoHtml = "<span> ein, die Anwendungen </span>";
+
+        applicationInfoCustomText += RazorHelperExtensions.WriteOutApplicationListCustomText(Model.Applications, "de");
+        applicationInfoHtml += @RazorHelperExtensions.WriteOutApplicationListHtml(Model.Applications, "de");
+
+        applicationInfoCustomText += " in " + Model.ApplicationScope + " zu verwenden.";
+        applicationInfoHtml += " in " + "<span class=\"blurrable bold\">" + Model.ApplicationScope + "</span> zu verwenden.";
+    }
+}
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+@Include("Head", Model.MailInfo, typeof(MailInfo))
+
+<body>
+    <table class="table-mail-container" align="center" width="600" cellpadding="0" cellspacing="0">
+        <tbody>
+            <tr>
+                <td vAlign="top" rowspan="1" colspan="1">
+                    <table class="table-mail-content" cellpadding="0" cellspacing="0" border="0">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    @Include("MailScopedHeader", Model.ApplicationScope, typeof(String))
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <table align="center" class="table-mail-body">
+                                        <tbody>
+                                            <tr>
+                                                <td>
+
+                                                    <!-- Header -->
+                                                    <table align="center" width="100%" cellspacing="0" cellpadding="0">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td style="text-align: center;">
+                                                                    <p class="mail-title">@mailTitle</p>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+
+                                                    <div class="horizontal-divider-whitespace">&nbsp;</div>
+
+                                                    <!-- Salutation -->
+                                                    <p>Guten Tag <span class="blurrable">@Model.MailInfo.Firstname @Model.MailInfo.Lastname</span>,</p>
+
+                                                    <!-- Action -->
+                                                    <p>
+                                                        <span class="blurrable bold">@Model.AccountOfficialName</span> lädt Sie @applicationInfoHtml
+                                                        <br />
+                                                    </p>
+
+                                                    <!-- Employee Profile Info -->
+                                                    <table class="table-mail-highlight" cellpadding="0" cellspacing="0">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td style="padding: 15px;">
+                                                                    <div style="margin-bottom: 10px;">
+                                                                        <span class="blurrable">@Model.AccountOfficialName</span> hat uns folgende Angaben zur Verfügung gestellt:
+                                                                    </div>
+
+                                                                    <table class="table-mail-form" cellpadding="0" cellspacing="0">
+                                                                        <tbody>
+                                                                            <tr>
+                                                                                <td class="first">Vorname:</td>
+                                                                                <td><span class="blurrable">@Model.MailInfo.Firstname</span></td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td class="first">Nachname:</td>
+                                                                                <td><span class="blurrable">@Model.MailInfo.Lastname</span></td>
+                                                                            </tr>
+                                                                        </tbody>
+                                                                    </table>
+
+                                                                    <div style="margin-top: 10px;">
+                                                                        <span class="small">Die Angaben stimmen nicht? Nehmen Sie diese Einladung nicht an und wenden Sie sich an Ihren Arbeitgeber.</span>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+
+                                                    <!-- Call to Action -->
+                                                    <br />
+                                                    <table align="center" class="table-primary-action" border="0" cellpadding="0" cellspacing="0">
+                                                        <tr>
+                                                            <td style="text-align: center">
+                                                                <a style="text-decoration: none;" class="primary-action" href="@Model.Url" target="_blank">
+                                                                    <span>Einladung annehmen</span>
+                                                                </a>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                    <br />
+
+                                                    <!-- How to proceed -->
+                                                    <p>
+                                                        Was müssen Sie tun:
+                                                    </p>
+
+                                                    <ol class="mail-ordered-list">
+                                                        <li>Klicken Sie auf die vorstehende Schaltfläche „Einladung annehmen“.</li>
+                                                        <li>Melden Sie sich mit Ihrem persönlichen SD Worx-Konto an. Sollten Sie noch kein Konto haben, registrieren Sie sich zunächst.</li>
+                                                        <li>Dann können Sie die Einladung annehmen und <span class="blurrable">@Model.ApplicationScope</span> für <span class="blurrable">@Model.AccountOfficialName</span> nutzen.</li>
+                                                    </ol>
+
+                                                    @Include("MailGreeting", "de", typeof(string))
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td vAlign="top" rowspan="1" colspan="1">
+                    <table class="table-mail-footer" cellpadding="0" cellspacing="0" border="0">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    @Include("MailFooter", "DE", typeof(string))
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
+
+<CustomText>
+    Guten Tag @Model.MailInfo.Firstname @Model.MailInfo.Lastname,
+
+    @Model.AccountOfficialName lädt Sie @applicationInfoCustomText
+
+    @Model.AccountOfficialName hat uns folgende Angaben zur Verfügung gestellt:
+
+    - Vorname: @Model.MailInfo.Firstname
+    - Nachname: @Model.MailInfo.Lastname
+
+    Die Angaben stimmen nicht? Nehmen Sie diese Einladung nicht an und wenden Sie sich an Ihren Arbeitgeber.
+
+    - Einladung annehmen: @Model.Url
+
+    Was müssen Sie tun:
+
+    1. Klicken Sie auf die vorstehende Link „Einladung annehmen“.
+    2. Melden Sie sich mit Ihrem persönlichen SD Worx-Konto an. Sollten Sie noch kein Konto haben, registrieren Sie sich zunächst.
+    3. Dann können Sie die Einladung annehmen und @Model.ApplicationScope für @Model.AccountOfficialName nutzen.
+
+    Mit freundlichen Grüßen,
+    Das SD Worx Team
+</CustomText>

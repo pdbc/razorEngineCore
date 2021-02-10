@@ -1,17 +1,21 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFramework>netstandard2.1</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Templates\Mails\MigrationAuditRecord\" />
-    <Folder Include="Templates\Mails\PersonalProfileMergedAuditRecord\" />
-    <Folder Include="Templates\Mails\VerifyAccountForRegistration\" />
-    <Folder Include="Templates\Mails\VerifyAccountForRecovery\" />
+    <Compile Remove="Templates\Mailing\**" />
+    <EmbeddedResource Remove="Templates\Mailing\**" />
+    <None Remove="Templates\Mailing\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Images\" />
+    <Folder Include="Templates\Mails\InvitationForSingleApplicationPortal\" />
+    <Folder Include="Templates\Mails\InvitationForAutoUnlinkedEmloyeeProfile\" />
+    <Folder Include="Templates\Mails\Invitation\" />
     <Folder Include="Templates\Mails\RegistrationAuditRecord\" />
-    <Folder Include="Templates\Mails\ProfileDateOfBirthCorrectedAuditRecord\" />
-    <Folder Include="Templates\Mails\PasswordChangedAuditRecord\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -19,6 +23,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="Images\Logo_SDWorx.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="Templates\Layout\footer.cshtml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -34,13 +41,172 @@
     <None Update="Templates\Layout\horizontal-divider.cshtml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="Templates\Layout\layoutWithApplicationScope.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="Templates\Layout\layout.cshtml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="Templates\Layout\stylesheet.cshtml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Templates\Layout\template3-text.cshtml">
+    <None Update="Templates\Mails\InvitationForAutoUnlinkedEmloyeeProfile\InvitationForAutoUnlinkedEmloyeeProfile.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Templates\Mails\InvitationForAutoUnlinkedEmloyeeProfile\InvitationForAutoUnlinkedEmloyeeProfile_de.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Templates\Mails\InvitationForAutoUnlinkedEmloyeeProfile\InvitationForAutoUnlinkedEmloyeeProfile_fr.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Templates\Mails\InvitationForAutoUnlinkedEmloyeeProfile\InvitationForAutoUnlinkedEmloyeeProfile_nl.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Templates\Mails\InvitationForSingleApplicationPortal\InvitationForSingleApplicationPortal.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Templates\Mails\InvitationForSingleApplicationPortal\InvitationForSingleApplicationPortal_de.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Templates\Mails\InvitationForSingleApplicationPortal\InvitationForSingleApplicationPortal_fr.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Templates\Mails\InvitationForSingleApplicationPortal\InvitationForSingleApplicationPortal_nl.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Templates\Mails\Invitation\Invitation.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Templates\Mails\Invitation\Invitation_de.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Templates\Mails\Invitation\Invitation_fr.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Templates\Mails\Invitation\Invitation_nl.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Templates\Mails\MigrationAuditRecord\MigrationAuditRecord_fr.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Templates\Mails\MigrationAuditRecord\MigrationAuditRecord_de.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Templates\Mails\MigrationAuditRecord\MigrationAuditRecord_nl.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Templates\Mails\MigrationAuditRecord\MigrationAuditRecord.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Templates\Mails\PasswordChangedAuditRecord\PasswordChangedAuditRecord.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Templates\Mails\PasswordChangedAuditRecord\PasswordChangedAuditRecord_de.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Templates\Mails\PasswordChangedAuditRecord\PasswordChangedAuditRecord_fr.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Templates\Mails\PasswordChangedAuditRecord\PasswordChangedAuditRecord_nl.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Templates\Mails\PersonalProfileMergedAuditRecord\PersonalProfileMergedAuditRecord.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Templates\Mails\PersonalProfileMergedAuditRecord\PersonalProfileMergedAuditRecord_de.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Templates\Mails\PersonalProfileMergedAuditRecord\PersonalProfileMergedAuditRecord_fr.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Templates\Mails\PersonalProfileMergedAuditRecord\PersonalProfileMergedAuditRecord_nl.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Templates\Mails\ProfileDateOfBirthCorrectedAuditRecord\ProfileDateOfBirthCorrectedAuditRecord.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Templates\Mails\ProfileDateOfBirthCorrectedAuditRecord\ProfileDateOfBirthCorrectedAuditRecord_de.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Templates\Mails\ProfileDateOfBirthCorrectedAuditRecord\ProfileDateOfBirthCorrectedAuditRecord_fr.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Templates\Mails\ProfileDateOfBirthCorrectedAuditRecord\ProfileDateOfBirthCorrectedAuditRecord_nl.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Templates\Mails\RegistrationAuditRecord\RegistrationAuditRecord.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Templates\Mails\RegistrationAuditRecord\RegistrationAuditRecord_de.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Templates\Mails\RegistrationAuditRecord\RegistrationAuditRecord_fr.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Templates\Mails\RegistrationAuditRecord\RegistrationAuditRecord_nl.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Templates\Mails\VerifyAccountForRecovery\VerifyAccountForRecovery.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Templates\Mails\VerifyAccountForRecovery\VerifyAccountForRecovery_de.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Templates\Mails\VerifyAccountForRecovery\VerifyAccountForRecovery_fr.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Templates\Mails\VerifyAccountForRecovery\VerifyAccountForRecovery_nl.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Templates\Mails\VerifyAccountForRegistration\VerifyAccountForRegistration.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Templates\Mails\VerifyAccountForRegistration\VerifyAccountForRegistration_de.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Templates\Mails\VerifyAccountForRegistration\VerifyAccountForRegistration_fr.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Templates\Mails\VerifyAccountForRegistration\VerifyAccountForRegistration_nl.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Templates\Text\InvitationForAutoUnlinkedEmloyeeProfile\InvitationForAutoUnlinkedEmloyeeProfile.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Templates\Text\InvitationForAutoUnlinkedEmloyeeProfile\InvitationForAutoUnlinkedEmloyeeProfile_de.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Templates\Text\InvitationForAutoUnlinkedEmloyeeProfile\InvitationForAutoUnlinkedEmloyeeProfile_fr.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Templates\Text\InvitationForAutoUnlinkedEmloyeeProfile\InvitationForAutoUnlinkedEmloyeeProfile_nl.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Templates\Text\InvitationForSingleApplicationPortal\InvitationForSingleApplicationPortal.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Templates\Text\InvitationForSingleApplicationPortal\InvitationForSingleApplicationPortal_de.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Templates\Text\InvitationForSingleApplicationPortal\InvitationForSingleApplicationPortal_fr.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Templates\Text\InvitationForSingleApplicationPortal\InvitationForSingleApplicationPortal_nl.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Templates\Text\Invitation\Invitation.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Templates\Text\Invitation\Invitation_de.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Templates\Text\Invitation\Invitation_fr.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Templates\Text\Invitation\Invitation_nl.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Templates\Text\MigrationAuditRecord\MigrationAuditRecord.cshtml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>

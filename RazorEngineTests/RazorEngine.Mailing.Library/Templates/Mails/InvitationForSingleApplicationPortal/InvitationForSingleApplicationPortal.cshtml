@@ -1,0 +1,110 @@
+@using System
+@using System.Linq
+@using RazorEngine.Mailing.Library
+@using RazorEngine.Mailing.Library.Models
+
+@inherits RazorEngineCore.RazorEngineTemplateBase<RazorEngine.Mailing.Library.Models.InvitationViewModel>
+
+@{
+    Layout = "layout";
+}
+
+<!-- Header -->
+<table align="center" width="100%" cellspacing="0" cellpadding="0">
+    <tbody>
+        <tr>
+            <td style="text-align: center;">
+                <p class="mail-title">You've been invited to use <span class="blurrable">@Model.ApplicationScope</span></p>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<div class="horizontal-divider-whitespace">&nbsp;</div>
+
+<!-- Salutation -->
+<p>Hi <span class="blurrable ">@Model.MailInfo.Firstname @Model.MailInfo.Lastname</span>,</p>
+
+<!-- Action -->
+<p>
+    <span class="blurrable bold">@Model.AccountOfficialName</span> invites you to use <span class="blurrable bold">@Model.ApplicationScope by SD Worx</span>.<br />
+</p>
+
+<!-- Employee Profile Info -->
+<table class="table-mail-highlight" cellpadding="0" cellspacing="0">
+    <tbody>
+        <tr>
+            <td style="padding: 15px;">
+                <div style="margin-bottom: 10px;">
+                    <span class="blurrable">@Model.AccountOfficialName</span> provided us the following information:
+                </div>
+
+                <table class="table-mail-form" cellpadding="0" cellspacing="0">
+                    <tbody>
+                        <tr>
+                            <td class="first">First name:</td>
+                            <td><span class="blurrable">@Model.MailInfo.Firstname</span></td>
+                        </tr>
+                        <tr>
+                            <td class="first">Last name:</td>
+                            <td><span class="blurrable">@Model.MailInfo.Lastname</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div style="margin-top:10px;">
+                    <span class="small">Information incorrect? Do not accept this invitation and contact your employer.</span>
+                </div>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+<!-- Call to Action -->
+<br />
+<table align="center" class="table-primary-action" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+        <td style="text-align: center">
+            <a style="text-decoration: none;" class="primary-action" href="@Model.Url" target="_blank">
+                <span>Accept invitation</span>
+            </a>
+        </td>
+    </tr>
+</table>
+<br />
+
+<!-- How to proceed -->
+<p>
+    What do you need to do:
+</p>
+
+<ol class="mail-ordered-list">
+    <li>Click the "accept invitation" button above.</li>
+    <li>Login with your personal SD Worx account, or register if you don't have an account yet.</li>
+    <li>You will then be able to accept the invitation and use <span class="blurrable">@Model.ApplicationScope</span> for <span class="blurrable">@Model.AccountOfficialName</span>.</li>
+</ol>
+
+<CustomText>
+    Hi @Model.MailInfo.Firstname @Model.MailInfo.Lastname,
+
+    @Model.AccountOfficialName invites you to use @Model.ApplicationScope by SD Worx.
+
+    @Model.AccountOfficialName provided us the following information:
+
+    - First name: @Model.MailInfo.Firstname
+    - Last name: @Model.MailInfo.Lastname
+
+    Information incorrect? Do not accept this invitation and contact your employer.
+
+    - Accept invitation: @Model.Url
+
+    What do you need to do:
+
+    1. Use the "Accept invitation" link above.
+    2. Login with your personal SD Worx account, or register if you don't have an account yet.
+    3. You will then be able to accept the invitation and use @Model.ApplicationScope for @Model.AccountOfficialName.
+
+    Friendly regards,
+    The SD Worx team
+</CustomText>

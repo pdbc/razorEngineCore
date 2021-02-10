@@ -1,0 +1,62 @@
+﻿@using RazorEngine.Mailing.Library.Models
+
+@inherits RazorEngineCore.RazorEngineTemplateBase<RazorEngine.Mailing.Library.Models.AuditProfileMergeViewModel>
+
+@{
+    Layout = "layout";
+}
+
+<!-- Header -->
+<table align="center" width="100%" cellspacing="0" cellpadding="0">
+    <tbody>
+        <tr>
+            <td style="text-align: center;">
+                <p class="mail-title">Jouw SD Worx-accounts zijn samengevoegd</p>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>Beste <span class="blurrable">@Model.MailInfo.Firstname @Model.MailInfo.Lastname</span>,</p>
+
+<p>Je ontvangt deze e-mail omdat jouw SD Worx accounts zijn samengevoegd. Mogelijk heb je dit zelf gedaan via Mijn Account of hebben wij dit voor jou uitgevoerd. Als wij bij nazicht van onze gegevens vaststellen dat er meerdere accounts zijn voor één persoon, dan worden deze automatisch samengevoegd.</p>
+
+<!-- Action -->
+<table width="100%" cellspacing="0" cellpadding="0">
+    <tbody>
+        <tr>
+            <td class="border-secondary">
+                <p class="text-secondary">
+                    <strong>Je kan je voortaan aanmelden met:</strong>
+                </p>
+                <ul>
+                    <li class="text-secondary"><span class="blurrable">@Model.EmailAddress</span></li>
+                    <li>je zelf gekozen wachtwoord</li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td class="border-padding">
+                <p>
+                    <strong>Je gegevens:</strong>
+                </p>
+                <ul class="mail-unordered-list">
+                    <li>Voornaam: <span class="blurrable">@Model.Firstname</span></li>
+                    <li>Achternaam: <span class="blurrable">@Model.Lastname</span></li>
+                    <li>Geboortedatum: <span class="blurrable">@Model.DateOfBirth</span></li>
+                    <li>E-mailadres: <span class="blurrable">@Model.EmailAddress</span></li>
+                    @if (Model.HasMobileNumber)
+                    {
+                        <li>Mobiel nummer: <span class="blurrable">+@Model.MobileNumberPrefix@Model.MobileNumber</span></li>
+                    }
+
+                </ul>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<p>
+    Je andere account <span class="blurrable">@Model.PreviousEmailAddress</span> is gedeactiveerd. Je zal niet meer kunnen aanmelden met deze gegevens. Al je toepassingen zijn nu beschikbaar via het volgende account <span class="blurrable">@Model.EmailAddress</span>.
+</p>
+
+<p>Je kan bovendien jouw SD Worx accountgegevens ten alle tijde consulteren en wijzigen via <a href="@Model.PortalProfileUrl" target="_blank">Mijn account</a>.</p>

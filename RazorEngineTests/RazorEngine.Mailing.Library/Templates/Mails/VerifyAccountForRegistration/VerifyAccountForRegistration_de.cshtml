@@ -1,0 +1,50 @@
+﻿@using RazorEngine.Mailing.Library.Models
+
+@inherits RazorEngineCore.RazorEngineTemplateBase<RazorEngine.Mailing.Library.Models.VerifyAccountViewModel>
+
+@{
+    Layout = "layout";
+}
+
+
+<!-- Header -->
+<table align="center" width="100%" cellspacing="0" cellpadding="0">
+    <tbody>
+        <tr>
+            <td style="text-align: center;">
+                <p class="mail-title">Für ein SD Worx-Konto müssen Sie Ihre E-Mail-Adresse bestätigen</p>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<div class="horizontal-divider-whitespace">&nbsp;</div>
+
+<!-- Salutation -->
+<p>Hallo <span class="blurrable">@Model.MailInfo.Firstname @Model.MailInfo.Lastname</span>,</p>
+
+<!-- Action -->
+<p>
+    Vielen Dank, dass Sie SD Worx verwenden. Sie erhalten diese E-Mail, weil wir überprüfen möchten, ob Sie Zugang zu dieser E-Mail-Adresse haben.
+    Verwenden Sie den folgenden Bestätigungscode, um die Gültigkeit Ihrer E-Mail-Adresse zu bestätigen und mit den Änderungen an Ihrem SD Worx-Konto fortzufahren.
+</p>
+
+<table class="table-verification-code" align="center" border="0" cellpadding="0" cellspacing="0">
+    <tbody>
+        <tr>
+            <td style="text-align: center">
+                <span class="verification-code">
+                    <span class="blurrable">@Model.VerificationCode</span><br />
+                </span>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<br />
+
+<p>
+    <b>Dieser Bestätigungscode ist nur für kurze Zeit gültig und kann nur einmal verwendet werden. </b>
+    Wenn Sie nicht beantragt haben, ein SD Worx-Konto zu ändern, ist es wahrscheinlich, dass ein anderer Benutzer Ihre E-Mail-Adresse versehentlich eingegeben hat.
+    In diesem Fall kannst du diese Nachricht einfach ignorieren und es wird kein Konto geändert.
+</p>
+

@@ -46,19 +46,12 @@ namespace RazorEngine.Mailing.Library.Models
         /// HasRecoveryEmailAddresses
         /// </summary>
         /// <returns></returns>
-        public bool HasRecoveryEmailAddresses()
-        {
-            return RecoveryEmailAddresses != null && RecoveryEmailAddresses.ToList().Any();
-        }
-
+        public bool HasRecoveryEmailAddresses => RecoveryEmailAddresses != null && RecoveryEmailAddresses.ToList().Any();
         /// <summary>
         /// HasMobileNumber
         /// </summary>
         /// <returns></returns>
-        public bool HasMobileNumber()
-        {
-            return !string.IsNullOrWhiteSpace(MobileNumber);
-        }
+        public bool HasMobileNumber => !string.IsNullOrWhiteSpace(MobileNumber);
 
     }
 }

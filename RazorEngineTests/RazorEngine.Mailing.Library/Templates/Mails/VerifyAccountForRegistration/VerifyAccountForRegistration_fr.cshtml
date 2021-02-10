@@ -1,0 +1,51 @@
+﻿@using RazorEngine.Mailing.Library.Models
+
+@inherits RazorEngineCore.RazorEngineTemplateBase<RazorEngine.Mailing.Library.Models.VerifyAccountViewModel>
+
+@{
+    Layout = "layout";
+}
+
+
+
+<!-- Header -->
+<table align="center" width="100%" cellspacing="0" cellpadding="0">
+    <tbody>
+        <tr>
+            <td style="text-align: center;">
+                <p class="mail-title">Vérification de votre adresse e-mail</p>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<div class="horizontal-divider-whitespace">&nbsp;</div>
+
+<!-- Salutation -->
+<p>Cher <span class="blurrable">@Model.MailInfo.Firstname @Model.MailInfo.Lastname</span>,</p>
+
+<!-- Action -->
+<p>
+    Merci d'utiliser SD Worx. Vous recevez ce courriel parce que nous voulons vérifier que vous avez accès à cette adresse électronique.
+    Utilisez le code de vérification suivant pour confirmer la validité de votre adresse e-mail et poursuivre les modifications apportées à votre compte SD Worx.
+</p>
+
+<table class="table-verification-code" align="center" border="0" cellpadding="0" cellspacing="0">
+    <tbody>
+        <tr>
+            <td style="text-align: center">
+                <span class="verification-code">
+                    <span class="blurrable">@Model.VerificationCode</span><br />
+                </span>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<br />
+
+<p>
+    <b>Ce code de vérification est un code à usage unique et sa validité est limitée dans le temps. </b>
+    Si vous n'avez pas demandé à modifier un compte SD Worx, il est probable qu'un autre utilisateur ait saisi votre adresse e-mail par erreur.
+    Dans ce cas, vous pouvez simplement ignorer ce message et aucun compte ne sera modifié.
+</p>
+

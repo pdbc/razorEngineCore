@@ -1,0 +1,68 @@
+@using System
+@using System.Linq
+@using RazorEngine.Mailing.Library
+@using RazorEngine.Mailing.Library.Models
+
+@inherits RazorEngineCore.RazorEngineTemplateBase<RazorEngine.Mailing.Library.Models.InvitationViewModel>
+
+@{
+    Layout = "layout";
+}
+
+
+@{
+    var applicationInfoCustomText = "";
+    var applicationInfoHtml = "";
+    var mailTitle = "";
+
+    if (@Model.Applications.Count == 0)
+    {
+        mailTitle = "You've been invited to use <span class=\"blurrable\">" + @Model.ApplicationScope + "</span>";
+        applicationInfoCustomText = @Model.ApplicationScope + " by SD Worx.";
+        applicationInfoHtml = "<span class=\"blurrable bold\">" + Model.ApplicationScope + " by SD Worx.</span>";
+    }
+    else if (@Model.Applications.Count == 1)
+    {
+        mailTitle = "You've been invited to use <span class=\"blurrable\">" + @Model.Applications.FirstOrDefault() + "</span>";
+        applicationInfoCustomText = "the application " + @Model.Applications.FirstOrDefault() + " in " + @Model.ApplicationScope + ".";
+        applicationInfoHtml = "<span>the application </span>";
+        applicationInfoHtml += "<span class=\"blurrable bold\">" + @Model.Applications.FirstOrDefault() + "</span>";
+        applicationInfoHtml += "<span> in </span>";
+        applicationInfoHtml += "<span class=\"blurrable bold\">" + @Model.ApplicationScope + "</span>.";
+    }
+    else
+    {
+        mailTitle = "You've been invited to use new applications";
+        applicationInfoCustomText = "the applications ";
+        applicationInfoHtml = "<span> the applications </span>";
+
+        applicationInfoCustomText += Extensions.WriteOutApplicationListCustomText(Model.Applications, "en");
+        applicationInfoHtml += Extensions.WriteOutApplicationListHtml(Model.Applications, "en");
+
+        applicationInfoCustomText += " in " + Model.ApplicationScope + ".";
+        applicationInfoHtml += " in " + "<span class=\"blurrable bold\">" + Model.ApplicationScope + "</span>.";
+    }
+}
+
+
+Dag @Model.MailInfo.Firstname @Model.MailInfo.Lastname,
+
+@Model.AccountOfficialName nodigt je uit om aan de slag te gaan met @applicationInfoCustomText
+
+@Model.AccountOfficialName heeft ons de volgende gegevens meegedeeld:
+
+- Voornaam: @Model.MailInfo.Firstname
+- Achternaam: @Model.MailInfo.Lastname
+
+Is deze informatie fout? Aanvaard deze uitnodiging dan niet en neem contact op met je werkgever.
+
+- Uitnodiging accepteren: @Model.Url
+
+Wat moet je doen?
+
+1. Gebruik de "Uitnodiging accepteren" link hierboven.
+2. Log in met je persoonlijke SD Worx-account of maak een account aan als je nog er geen hebt.
+3. Vervolgens kun je de uitnodiging accepteren en @Model.ApplicationScope gebruiken voor @Model.AccountOfficialName.
+
+Met vriendelijke groeten,
+Het SD Worx team

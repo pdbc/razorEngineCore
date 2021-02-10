@@ -14,11 +14,22 @@ namespace RazorEngine.Mailing.Library.Models
         public String TemplateName { get; set; }
         public String TemplateLanguageCode { get; set; }
 
+        // TODO Can we elaborate on this??
+        //public String MailTitle { get; set; }
+        //public String MailSubTitle { get; set; } = null;
+
+        public bool UseHeaderForApplicationScope => ! String.IsNullOrEmpty(ApplicationScope?.Trim());
+
+        public String ApplicationScope { get; set; }
+
         public String GetTemplateKey()
         {
             return $"{TemplateName}_{TemplateLanguageCode}";
         }
-
+        public String GetTemplateKey(string defaultLanguage)
+        {
+            return $"{TemplateName}_{defaultLanguage}";
+        }
 
         // Mail
         public string ToEmailAddress { get; set; }
@@ -39,5 +50,7 @@ namespace RazorEngine.Mailing.Library.Models
         /// Only use during diagnostics test
         /// </summary>
         public Boolean ShouldAuditMailEvent { get; set; }
+
+        
     }
 }
